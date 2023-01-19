@@ -9,7 +9,9 @@ const jwt = require("jsonwebtoken");
 const { userRouter } = require("./routes/user.route");
 const { authenticator } = require("./middlewares/authenticator.middlewares");
 const { ProductModel } = require("./model/product.model");
-
+const { userProductRouter } = require("./routes/product.route");
+const { AdminProductModel } = require("./model/AdminProduct");
+const { adminRoute } = require("./routes/admin.route");
 
 const app = express();
 app.use(cors());
@@ -19,29 +21,13 @@ app.post("/", (req, res) => {
   res.send("hii okk");
 });
 
-app.use('/user',userRouter)
+app.use("/admin", adminRoute);
 
-// Description:{type:String,require:true},
-// Rating:{type:String,require:true},
-// Price:{type:String,require:true},
-// Discount:{type:Number},
-// Category:{type:String,require:true},
-// userID:String
+app.use("/user", userRouter);
 
 app.use(authenticator);
-app.post('/pro',async(req,res)=>{
-    let {Description,Rating,Price,Discount,Category,userID} = req.body;
-    try {
-        let payload = req.body;
-        let pushdata = new ProductModel(payload);
-         await pushdata.save();
-         console.log(pushdata);
-         res.send({msg:'Product has been added',pushdata});
-    } catch (error) {
-        res.send({msg:'error in adding product'})
-        console.log(error);
-    }
-})
+// authenticator for only for the logged in people -------
+app.use("/", userProductRouter);
 
 app.listen(process.env.port, async () => {
   try {
@@ -52,3 +38,12 @@ app.listen(process.env.port, async () => {
     console.log(error);
   }
 });
+
+// {
+//     "Image":"https://img5.hkrtcdn.com/22823/prd_2282294-MuscleBlaze-Super-Gainer-XXL-11-lb-Chocolate_c_s.jpg",
+//     "Description":"great energy booster",
+//     "Rating":"4",
+//     "Price":456,
+//     "Discount":45,
+//     "Category":"fat"
+//   }
