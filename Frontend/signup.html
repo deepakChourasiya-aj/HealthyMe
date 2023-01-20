@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.css">
+    <title>Register page</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Signup</h1>
+    <div class="divmain">
+        <form id="formdata" action="">
+            <label for="name">Name</label>
+            <br>
+
+            <input type="text" id="name" placeholder="Enter name" required="true">
+              <br>
+            <label for="name">Email</label>
+            <br>
+
+            <input type="email" id="email"  placeholder="Enter email" required="true">
+            <br>
+            <label for="Password">Password</label>
+            <br>
+
+            <input type="text" id="pass" placeholder="Enter password" required="true">
+            <br>
+            <label for="location">Location</label>
+            <br>
+
+            <input type="text" id="location" placeholder="Enter Location" required="true">
+            <br>
+
+            <button id="submitbutton" type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    let button = document.querySelector('form')
+    button.addEventListener('submit',(e)=>{
+    e.preventDefault();
+       let name = document.querySelector('#name').value;
+       let email = document.querySelector('#email').value;
+       let password = document.querySelector('#pass').value;
+       let location = document.querySelector('#location').value;
+       if(name && email && password && location){
+        console.log('okk')
+           }else{
+            alert('please fill the required detials')
+           }
+
+       let obj= {
+        name,
+        email,
+        password,
+        location
+       }
+       console.log(obj)
+       register(obj);
+     
+    })
+
+                
+   async function register(obj){
+    let res = await fetch('http://localhost:9000/user/signup',{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify(obj)
+    })
+    let data = await res.json();
+    console.log(data);
+     if(res.ok){
+        alert('user has been registered verification mail sent to users email id')
+        console.log(res.msg)
+     }else{
+        alert('error in registering ')
+     }
+   }
+</script>

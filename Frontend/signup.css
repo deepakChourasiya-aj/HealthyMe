@@ -1,0 +1,40 @@
+.divmain{
+    background:skyblue;
+    background-image: linear-gradient(rgba(10, 240, 248, 0.808), skyblue);
+    width: 25%;
+    margin: auto;
+    padding: 40px;
+    font-family: 'Poppins', sans-serif;
+    border-top-left-radius: 20px;
+
+}
+
+input{
+    width: 90%;
+    align-items: center;
+    padding: 7px 7px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: larger;
+    border-radius: 20px;
+
+}
+label{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: blanchedalmond;
+}
+#submitbutton{
+    width: 93%;
+    margin-top: 23px;
+    padding: 6px;
+    font-size: 20px;
+    background-color: rgb(62, 62, 80);
+    color: white;
+    border-radius: 20px;
+    /* border-top-left-radius: 20px; */
+
+}
