@@ -5,6 +5,8 @@ const userRouter = express.Router();
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcrypt");
 const { UserModel } = require("../model/usermodel");
+const { authenticator } = require("../middlewares/authenticator.middlewares");
+const { ProductModel } = require("../model/product.model");
 
 var transporter = nodemailer.createTransport({
   service: "gmail",
@@ -107,4 +109,31 @@ userRouter.post("/login", async (req, res) => {
   }
 });
 
+
+
+
+// dummy
+// userRouter.post("/add/:id",authenticator,async(req,res)=>{
+//   const {userID}=req.body
+//   const data=await UserModel.findOne({_id:userID});
+  
+//   const para=req.params.id;
+//   const validity=await ProductModel.findOne({_id:para});
+//   console.log(validity)
+//  if(validity){
+//   data.purchase.push(para);
+//   await data.save();
+//   res.send({"msg":"data got added succ"})
+//  }else{
+//   return res.json("Invalid I'd")
+//  }
+// })
+
+
+// userRouter.get("/check",authenticator,async (req,res)=>{
+//   const {userID}=req.body
+//   console.log(userID)
+//   const data=await UserModel.findOne({_id:userID}).populate("purchase")
+//   res.send(data)
+// })
 module.exports = { userRouter };

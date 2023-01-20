@@ -6,6 +6,7 @@ const authenticator = (req, res, next) => {
     if (decoded) {
       const userID = decoded.userID;
       console.log(decoded);
+      console.log(11)
       req.body.userID = userID;
       next();
     } else {
