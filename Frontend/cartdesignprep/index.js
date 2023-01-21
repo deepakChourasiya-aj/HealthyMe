@@ -88,7 +88,7 @@ async function data(url) {
 async function render(res) {
 
   let datarender = document.querySelector("#firstdiv");
-  datarender.innerHTML = res.map((item,i) => {
+  datarender.innerHTML = res.map((item) => {
 
     return `
       <div class="cartmain">
@@ -98,16 +98,34 @@ async function render(res) {
               <h6>Rating⭐${item.Rating}</h6>          
           </div>
           <h6>${item.Description}</h6>
-          <span> <b>₹${item.Price}     <s>${item.Price * 2}</s></b> </span>
-          ${console.log(item._id)}
-          <button id="addtocart" ${onclick=()=>add_to_cart(i)}><h6>Add to cart</h6>          
+          <span> <b>₹${item.Price}     <s id="str">${item.Price * 2}</s></b> </span>
+          <button  class="addtocart" id="${item._id}"} >Add to cart          
           </button>
       </div>
       </div>
       `
   }).join(' ');
+
+
+  // -------------------------btn handles--------->
+  let buttons = document.querySelectorAll('.addtocard');
+  for (btn of buttons) {
+    btn.addEventListener('click', onClick = async (event) => {
+      console.log(event.target.id);
+      add_to_cart(event.target.id)
+    })
+  }
 };
-// render();
- function add_to_cart(id){
-    console.log(id);
+// id="addtocart"
+async function add_to_cart(id) {
+  // console.log(id);
+  let res = await fetch(`http://localhost:9000/user/add/${id}`, {
+    method: "POST",
+    headers: {
+      "Authorization": localStorage.getItem('token'),
+      "Content-Type": "application/json"
+    }
+  })
+  let data = await res.json();
+  console.log(data)
 }
