@@ -11,9 +11,12 @@ const authenticator = (req, res, next) => {
       next();
     } else {
       res.send("Please login first");
+      console.log('Please Login First form middlewares')
+
     }
   } else {
     res.send("Please Login First");
+    console.log('Please Login First form middlewares')
   }
 };
 module.exports = { authenticator };

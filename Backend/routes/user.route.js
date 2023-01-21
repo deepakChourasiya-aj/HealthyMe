@@ -7,6 +7,7 @@ const bcrypt = require("bcrypt");
 const { UserModel } = require("../model/usermodel");
 const { authenticator } = require("../middlewares/authenticator.middlewares");
 const { ProductModel } = require("../model/product.model");
+const { AdminProductModel } = require("../model/AdminProduct");
 
 var transporter = nodemailer.createTransport({
   service: "gmail",
@@ -74,7 +75,7 @@ userRouter.post("/signup", async (req, res) => {
     console.log(error);
   }
 });
-// _____________________________user__________login_____________________________________________
+// _____________________________user__________login___________________________
 
 userRouter.post("/login", async (req, res) => {
   const { email, password } = req.body;
@@ -95,7 +96,7 @@ userRouter.post("/login", async (req, res) => {
         bcrypt.compare(password, user[0].password, (err, result) => {
           if (result) {
             let token = jwt.sign({ userID: user[0]._id }, "healthyme");
-            res.send({ msg: "Login sucessful ", token: token });
+            res.send({ msg: "Login sucessful ", token: token, user });
           } else {
             res.send("Wrong credentials");
           }
@@ -109,14 +110,12 @@ userRouter.post("/login", async (req, res) => {
   }
 });
 
-
-
-
+// --------------------------------original----------------
 // dummy
 // userRouter.post("/add/:id",authenticator,async(req,res)=>{
 //   const {userID}=req.body
 //   const data=await UserModel.findOne({_id:userID});
-  
+
 //   const para=req.params.id;
 //   const validity=await ProductModel.findOne({_id:para});
 //   console.log(validity)
@@ -136,4 +135,75 @@ userRouter.post("/login", async (req, res) => {
 //   const data=await UserModel.findOne({_id:userID}).populate("purchase")
 //   res.send(data)
 // })
+
+// original------------------
+
+userRouter.post("/add/:id", authenticator, async (req, res) => {
+  const { userID } = req.body
+  const data = await UserModel.findOne({ _id: userID });
+
+  const para = req.params.id;
+  const validity = await AdminProductModel.findOne({ _id: para });
+  console.log(validity)
+  if (validity) {
+    data.purchase.push(para);
+    await data.save();
+    res.send({ "msg": "data got added succ" })
+  } else {
+    return res.json("Invalid I'd")
+  }
+})
+
+
+userRouter.get("/check", authenticator, async (req, res) => {
+  const { userID } = req.body
+  console.log(userID)
+  const data = await UserModel.findOne({ _id: userID }).populate("purchase");
+
+  res.send(data)
+  console.log(data.purchase);
+})
+
+userRouter.patch("/update/check/:id", authenticator, async (req, res) => {
+  const { userID } = req.body
+  let para = req.params.id;
+  console.log(userID)
+  const data = await UserModel.updateOne(
+    { _id: userID },
+    { $pull: { "purchase": para } })
+
+  res.send(data)
+  console.log(data.purchase);
+})
+
+// MyModel.updateOne(
+//   { _id: ObjectId("5f5d5e5c5d5e5f5c5d5e5f5c") },
+//   { $pull: { "arrayFieldName": "valueToRemove" } })
+
+// userRouter.get("/check",authenticator,async (req,res)=>{
+//   const {userID}=req.body
+//   console.log(userID)
+//   const data=await UserModel.findOne({_id:userID}).populate("purchase");
+//   res.send(data)
+//   console.log(data.purchase);
+// })
+
 module.exports = { userRouter };
+
+
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2M2M5OGQ3ZDdhMWZiM2ExZWE1ZDliODIiLCJpYXQiOjE2NzQyOTAxNDJ9.7-cncVkDMoDT8BjT7O4GKAWv_QeK0530itXLWec2iLA
+
+// api for the user post?
+// localhost:9000/user/add/63c842a7864c66e04e779435
+// api for the chcecking the data added by cx
+// localhost:9000/user/check
+
+
+// {
+//   "Image": "https://img5.hkrtcdn.com/22258/prd_2225754-HealthKart-HK-Vitals-Omega-3-1000mg-with-180mg-EPA-and-120mg-DHA-90-capsules_c_s.jpg",
+//   "Description": "HealthKart HK Vitals Fish Oil 1000mg with 180mg EPA and 120mg DHA, 60 capsules",
+//   "Rating": "4.6",
+//   "Price": 1500,
+//   "Discount": 35,
+//   "Category": "oil"
+// }

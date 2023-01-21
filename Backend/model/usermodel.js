@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
     purchase:[
        {
         type:String,
-        ref:"productdata"
+        ref:"adminproductdata"
        }
     ]
 }) 
