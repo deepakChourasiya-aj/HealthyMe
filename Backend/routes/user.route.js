@@ -84,7 +84,8 @@ userRouter.post("/login", async (req, res) => {
     if (email == "Admin123@gmail.com" && password == "Admin") {
       let findadmin = UserModel.find({ email });
       if (findadmin) {
-        res.send({ msg: "Admin login successfully" });
+        res.redirect('/Frontend/Admin.html')
+        // res.send({ msg: "Admin login successfully" });
       } else {
         res.send({ msg: "wrong credential" });
       }
@@ -97,6 +98,7 @@ userRouter.post("/login", async (req, res) => {
           if (result) {
             let token = jwt.sign({ userID: user[0]._id }, "healthyme");
             res.send({ msg: "Login sucessful ", token: token, user });
+            localStorage.setItem('name',name);
           } else {
             res.send("Wrong credentials");
           }

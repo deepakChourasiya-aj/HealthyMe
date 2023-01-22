@@ -8,6 +8,10 @@
     <title>login page</title>
   </head>
   <body>
+    <div style="width: 97%; margin: auto;" class="mainheader">
+      <img width="20%
+      " src="/Frontend/logo.png" alt="">
+   </div>
     <h1 style="text-align: center">login</h1>
     <div class="divmain">
       <form id="formdata" action="">
@@ -45,7 +49,7 @@
   });
 
   async function register(obj) {
-    let res = await fetch("http://localhost:9000/user/login", {
+    let res = await fetch("https://wild-lime-bluefish-boot.cyclic.app/user/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,9 +58,12 @@
     });
     let data = await res.json();
     localStorage.setItem("token", data.token);
+    localStorage.setItem('email',data.email);
     if (res.ok) {
       alert("Logged in successfully");
-    }
+      window.location.href = 'index.html'; 
+      // window.location.href = './cartdesignprep/index.html'; 
     console.log(data);
   }
+}
 </script>

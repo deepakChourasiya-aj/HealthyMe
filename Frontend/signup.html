@@ -8,7 +8,11 @@
     <title>Register page</title>
 </head>
 <body>
-    <h1 style="text-align: center;">Signup</h1>
+    <div style="width: 97%; margin: auto;" class="mainheader">
+        <img width="20%
+        " src="/Frontend/logo.png" alt="">
+     </div>
+    <h1 style="text-align: center; color: skyblue;">Signup</h1>
     <div class="divmain">
         <form id="formdata" action="">
             <label for="name">Name</label>
@@ -33,6 +37,7 @@
             <br>
 
             <button id="submitbutton" type="submit">Submit</button>
+            <a href="login.html" style="text-align: center; color: black; text-decoration: none;padding: 10px;">Login already user</a>
         </form>
     </div>
 </body>
@@ -64,7 +69,7 @@
 
                 
    async function register(obj){
-    let res = await fetch('http://localhost:9000/user/signup',{
+    let res = await fetch('https://wild-lime-bluefish-boot.cyclic.app/user/signup',{
         method:"POST",
         headers:{
             "Content-Type":"application/json"
@@ -75,6 +80,7 @@
     console.log(data);
      if(res.ok){
         alert('user has been registered verification mail sent to users email id')
+        window.location.href = "login.html"
         console.log(res.msg)
      }else{
         alert('error in registering ')

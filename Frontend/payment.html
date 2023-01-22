@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <title>Payment</title>
+  </head>
+  <style>
+    *{
+        margin-bottom:10px ;
+    }
+    label{
+        /* padding: 10px; */
+        font-size: larger;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    input{
+        padding: 10px;
+        margin: bottom 10px; ;
+    }
+    #name{
+        width: 91%;
+    }
+    button{
+        width: 100%;
+        background-color: blue;
+        color: white;
+        border-radius: 0;
+        padding: 10px;
+    }
+    #paymentmethod{
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        padding: 30px;
+    }
+  </style>
+  <body>
+    <h1 style="text-align: center">Payment information</h1>
+    <div style="align-items: center; width: 22%; margin: auto;" id="paymentmethod">
+      <form id="formdata" action="">
+        <label for="name">Card Holder Name</label>
+        <br />
+
+        <input type="text" id="name" placeholder="Enter name"  />
+        <br />
+        <label for="name">Card Number</label>
+        <br />
+        <input type="text" id="name" placeholder="Enter name" required="true" />
+      <br>
+        <table>
+          <tr>
+            <td>
+              <label for="name">CVV</label>
+              <br />
+              <input
+                type="text"
+                id="naaam"
+                placeholder="Enter CVV"
+                required="true"
+              />
+              <br />
+            </td>
+            <td>
+              <label for="name">Card Exp</label>
+              <br />
+              <input
+                type="date"
+                id="naaam"
+                placeholder="Enter name"
+                required="true"
+              />
+              <br />
+            </td>
+          </tr>
+        </table>
+        <br />
+        <button id="submitbutton" type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
+<script>
+    let sumbmit = document.querySelector('#submitbutton');
+    sumbmit.addEventListener('click',function(){
+        // alert('payment successful')
+        swal({
+  title: "payment successful!!",
+  text: "You clicked the button!",
+  icon: "success",
+  button: "Aww yiss!",
+ reload: window.location.href='index.html'
+   });
+
+    })
+</script>

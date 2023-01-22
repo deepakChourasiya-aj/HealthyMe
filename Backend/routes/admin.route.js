@@ -22,7 +22,7 @@ adminRoute.get('/all/:pricehandle', async (req, res) => {
     let price = req.params.pricehandle
     // console.log(price)
     if (price == 'Low_to_high') {
-      let product = await AdminProductModel.find().sort({ Price: 1 })
+      let product = await AdminProductModel.find().sort({ Price: 1 });
       // console.log(price)
       res.send(product);
     }
@@ -32,7 +32,7 @@ adminRoute.get('/all/:pricehandle', async (req, res) => {
       res.send(product);
     }
     else if (price == 'allproduct') {
-      let product = await AdminProductModel.find()
+      let product = await AdminProductModel.find();
       res.send(product);
       console.log(product.length);
     }
@@ -60,46 +60,46 @@ adminRoute.get('/all/:pricehandle', async (req, res) => {
       let product = await AdminProductModel.find({ Price: { $gte: 5000 } })
       res.send(product);
     }
-   else if(price=='one_star'){
-    let product = await AdminProductModel.find({Rating:1})
-    if(product){
-      res.send(product)
-    }else{
-      res.send(msg.error)
+    else if (price == 'one_star') {
+      let product = await AdminProductModel.find({ Rating: 1 })
+      if (product) {
+        res.send(product)
+      } else {
+        res.send(msg.error)
+      }
     }
-   }
-   else if(price=='two_star'){
-    let product = await AdminProductModel.find({Rating:{$gte:2}})
-    if(product.length>0){
-      res.send(product)
-    }else{
-      res.send(msg.error)
+    else if (price == 'two_star') {
+      let product = await AdminProductModel.find({ Rating: { $gte: 2 } })
+      if (product.length > 0) {
+        res.send(product)
+      } else {
+        res.send(msg.error)
+      }
     }
-   }
-   else if(price=='three_star'){
-    let product = await AdminProductModel.find({Rating:{$gte:3}})
-    if(product.length>0){
-      res.send(product)
-    }else{
-      res.send(msg.error)
+    else if (price == 'three_star') {
+      let product = await AdminProductModel.find({ Rating: { $gte: 3 } })
+      if (product.length > 0) {
+        res.send(product)
+      } else {
+        res.send(msg.error)
+      }
     }
-   }
-   else if(price=='four_star'){
-    let product = await AdminProductModel.find({Rating:{$gte:4}})
-    if(product.length>0){
-      res.send(product)
-    }else{
-      res.send(msg.error)
+    else if (price == 'four_star') {
+      let product = await AdminProductModel.find({ Rating: { $gte: 4 } })
+      if (product.length > 0) {
+        res.send(product)
+      } else {
+        res.send(msg.error)
+      }
     }
-   }
-   else if(price=='five_star'){
-    let product = await AdminProductModel.find({Rating:5})
-    if(product){
-      res.send(product)
-    }else{
-      res.send(msg.error)
+    else if (price == 'five_star') {
+      let product = await AdminProductModel.find({ Rating: 5 })
+      if (product) {
+        res.send(product)
+      } else {
+        res.send(msg.error)
+      }
     }
-   }
   } catch (error) {
     res.send({ msg: 'error in adding the product' })
   }
@@ -116,6 +116,17 @@ adminRoute.delete("/delete/:id", async (req, res) => {
   }
 })
 
+adminRoute.get("/pagination", async (req, res) => {
+  const { page = 1, limit = 7 } = req.query;
+  try {
+    let product = await AdminProductModel.find().limit(limit).skip((page - 1) * limit);
+    res.send(product);
+    console.log(product.length)
+  } catch (error) {
+    res.send({ msg: 'error in deleting' })
+  }
+})
+
 adminRoute.patch("/update/:id", async (req, res) => {
   let id = req.params.id;
   let payload = req.body;
@@ -123,6 +134,9 @@ adminRoute.patch("/update/:id", async (req, res) => {
   try {
     let updateProduct = await AdminProductModel.findByIdAndUpdate({ '_id': id }, payload);
     res.send({ msg: 'product has been updated' });
+    if(res.okk){
+      alert('product has been updated')
+    }
   } catch (error) {
     res.send({ msg: 'error in updated' })
   }
