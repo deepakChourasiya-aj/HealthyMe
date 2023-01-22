@@ -3,7 +3,7 @@
 let insideProductbox = document.querySelector('#productbox');
 
 async function RenderCheckout(){
-  let res = await fetch('http://localhost:9000/user/check',{
+  let res = await fetch('https://wild-lime-bluefish-boot.cyclic.app/user/check',{
     method:"GET",
     headers:{
         "Authorization":localStorage.getItem('token'),
@@ -85,3 +85,7 @@ function myordersummary(){
 }
 
 myordersummary();
+
+function gotoPaymentPay(){
+  window.location.href='../payment.html'
+}

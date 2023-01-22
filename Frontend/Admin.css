@@ -1,0 +1,100 @@
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+.adminPage{
+    display: flex;
+    /* border: 2px solid blue; */
+    height: auto;
+}
+.adminProducts{
+    width: 70%;
+    /* border: 2px solid red; */
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius:  10px; ;
+}
+.adminAddproduct{
+    width: 30%;
+    /* border: 2px solid green; */
+}
+#appendprodcuts tr td{
+    align-items: center;
+    /* margin: 20px; */
+}
+td{
+    padding: 10px;
+}
+#prodcutid{
+    width: 20%;
+    align-items: center;
+    text-align: center;
+}
+#prodcutdesription{
+    width: 3
+    0%;
+    align-items: center;
+    text-align: center;
+}
+#prodcutimage{
+    width: 40%;
+    align-items: center;
+    text-align: center;
+}
+#prodcutid1{
+    width: 20%;
+    margin-left: 40px;
+}
+#prodcutdesription1{
+    width: 50%;
+    margin-right: 20px;
+}
+#prodcutimage1{
+    width: 20%;
+    margin-right: 20px;
+}
+#Productsheading{
+    margin-bottom: 50px;
+}
+.deletebutton{
+    /* color: red; */
+    padding: 5px;
+    background-color: red;
+    border-radius: 5px;
+    color: white;
+    font-size: medium;
+}
+
+label{
+    /* padding: 10px; */
+    font-size: larger;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+input{
+    padding: 10px;
+    margin: bottom 10px; ;
+}
+#name{
+    width: 91%;
+}
+button{
+    width: 96%;
+    background-color: skyblue;
+    color: white;
+    border-radius: 0;
+    margin-top: 10px;
+    font-size: large;
+    padding: 10px;
+}
+#addfromthere{
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 15px;
+}
+
+#adminDescription{
+    width: 100%;
+    height:70px;
+    text-align: center;
+}

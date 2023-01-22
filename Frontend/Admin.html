@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Admin.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto+Condensed&family=Roboto:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <title>Admin Page</title>
+  </head>
+  <body>
+    <div class="adminPage">
+      <div class="adminProducts">
+        <h1 id="Productsheading" style="margin-left: 30px;">Products Available</h1>
+        <div id="appendprodcuts"></div>
+      </div>
+      <div class="adminAddproduct">
+        <div id="adminDescription">
+          <h1>Admin Panel</h1>
+        </div>
+        <div id="addfromthere">
+          <form id="formdata" action="">
+            <label for="name">Product Image</label>
+            <br />
+            <input
+              type="url"
+              class="Image"
+              id="name"
+              placeholder="Product Image"
+            />
+            <br />
+            <label for="name">Product Description</label>
+            <br />
+            <input
+              type="text"
+              id="name"
+              class="Description"
+              placeholder="Product Description"
+              required="true"
+            />
+            <br />
+            <label for="name">Product Rating</label>
+            <br />
+            <input
+              type="text"
+              id="name"
+              class="Rating"
+              placeholder="Product Rating"
+              required="true"
+            />
+            <br />
+            <label for="name">Product Price</label>
+            <br />
+            <input
+              type="text"
+              id="name"
+              class="Price"
+              placeholder="Product Price"
+              required="true"
+            />
+            <br />
+            <label for="name"> Discount if Available</label>
+            <br />
+            <input
+              type="text"
+              id="name"
+              class="Discount"
+              placeholder="Discount "
+              required="true"
+            />
+            <br />
+            <label for="name"> Product Category</label>
+            <br />
+            <input
+              type="text"
+              id="name"
+              class="Category"
+              placeholder="Category"
+              required="true"
+            />
+            <br />
+            <button id="submitbutton" type="submit">Add Product</button>
+          </form>
+        </div>
+        <!-- FORMTWO -->
+        <div style="margin-top: 50px;" id="addfromthere">
+          <h3>Edit the Product</h3>
+          <form id="formdata2" action="">
+            <label for="name">Product id</label>
+            <br />
+
+            <input
+              type="text"
+              class="ID2"  
+              id="name"
+              placeholder="Product Image"
+            />
+            <br />
+            <label for="name">Product Image</label>
+            <br />
+
+            <input
+              type="url"
+              class="Image2"
+              id="name"
+              placeholder="Product Image"
+            />
+            <br />
+            <label for="name">Product Description</label>
+            <br />
+            <input
+              type="text"
+              id="name"
+              class="Description2"
+              placeholder="Product Description"
+              required="true"
+            />
+            <br />
+            <label for="name">Product Rating</label>
+            <br />
+            <input
+              type="text"
+              id="name"
+              class="Rating2"
+              placeholder="Product Rating"
+              required="true"
+            />
+            <br />
+            <label for="name">Product Price</label>
+            <br />
+            <input
+              type="text"
+              id="name"
+              class="Price2"
+              placeholder="Product Price"
+              required="true"
+            />
+            <br />
+            <label for="name"> Discount if Available</label>
+            <br />
+            <input
+              type="text"
+              id="name"
+              class="Discount2"
+              placeholder="Discount "
+              required="true"
+            />
+            <br />
+            <label for="name"> Product Category</label>
+            <br />
+            <input
+              type="text"
+              id="name"
+              class="Category2"
+              placeholder="Category"
+              required="true"
+            />
+            <br />
+            <button id="submitbutton" type="submit"> Edit </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script src="Admin.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
