@@ -27,11 +27,49 @@ Ecommerece website for health and fitness product.
 
 ## API Reference
 
-#### Get all items
+#### User Endpoints
+
+```http
+  Signup
+
+  POST /user/signup/
+```
+```http
+  Login
+
+  POST /user/login/
+```
+#### Get all products
 
 ```http
   GET /admin/all
 ```
+
+#### Add products
+
+```http
+  POST /admin/add/
+```
+#### Delete products
+
+```http
+  DELETE /delete/:id
+```
+#### Update products
+
+```http
+  PATCH /delete/:id
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `product key` | `string` | **Required**. Your API key |
+
+
+
+
+
+
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
