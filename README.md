@@ -80,6 +80,10 @@ Ecommerece website for health and fitness product.
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 ![image](https://user-images.githubusercontent.com/109690823/223182325-47fc063c-11db-4559-91e2-199fba399d6c.png)
+![image](https://user-images.githubusercontent.com/109690823/223182773-0b4fbf6a-be2e-4506-afe7-5aeec790eab6.png)
+![image](https://user-images.githubusercontent.com/109690823/223183428-de9055e5-cf88-4316-9485-faa173db0dfb.png)
+
+
+
 
